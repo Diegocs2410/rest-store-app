@@ -1,23 +1,20 @@
-import { Router } from 'express';
+import { Router } from "express"
+import { AuthRoutes } from "./auth/routes"
 
-
-
-
+/**
+ * Represents the routes of the application.
+ */
 export class AppRoutes {
-
-
+  /**
+   * Returns the router with the defined routes.
+   *
+   * @returns {Router} The router with the defined routes.
+   */
   static get routes(): Router {
+    const router = Router()
 
-    const router = Router();
-    
-    // Definir las rutas
-    // router.use('/api/todos', /*TodoRoutes.routes */ );
+    router.use("/api/auth", AuthRoutes.routes)
 
-
-
-    return router;
+    return router
   }
-
-
 }
-

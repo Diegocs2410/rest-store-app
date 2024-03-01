@@ -1,11 +1,13 @@
 import bcryptAdapter from "../../config/bcrypt.adapter"
 import { UserModel } from "../../data"
+import jwt from "jsonwebtoken"
 import {
   CustomErrors,
   LoginUserDTO,
   RegisterUserDTO,
   UserEntity,
 } from "../../domain"
+import JwtAdapter from "../../config/jwt.adapter"
 
 class AuthService {
   constructor() {}
@@ -47,10 +49,15 @@ class AuthService {
       throw CustomErrors.badRequest("Email/Password does not match")
 
     const { password, ...rest } = UserEntity.fromObject(user)
+    const token = await JwtAdapter.generateToken({
+      id: user.id,
+    })
+
+    if (!token) throw CustomErrors.internalServer("Error generating token")
 
     return {
       user: rest,
-      token: "ABCToken",
+      token,
     }
   }
 }

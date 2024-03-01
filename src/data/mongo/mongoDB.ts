@@ -6,7 +6,7 @@ interface ConnectionOptions {
 }
 
 class MongoDataBase {
-  static connect = async ({ dbName, mongoURI }: ConnectionOptions) => {
+  static readonly connect = async ({ dbName, mongoURI }: ConnectionOptions) => {
     try {
       await mongoose.connect(mongoURI, {
         dbName,

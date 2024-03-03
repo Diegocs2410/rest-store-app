@@ -1,22 +1,26 @@
-import { Router } from "express"
-import { AuthRoutes } from "./auth/routes"
-import CategoryRoutes from "./category/routes"
+import { Router } from 'express';
+import { Authroutes } from './auth/routes';
+import { CategoryRoutes } from './category/routes';
 
-/**
- * Represents the routes of the application.
- */
+
+
+
 export class AppRoutes {
-  /**
-   * Returns the router with the defined routes.
-   *
-   * @returns {Router} The router with the defined routes.
-   */
+
+
   static get routes(): Router {
-    const router = Router()
 
-    router.use("/api/auth", AuthRoutes.routes)
-    router.use("/api/categories", CategoryRoutes.routes)
+    const router = Router();
+    
+    // Definir las rutas
+    router.use('/api/auth', Authroutes.routes );
+    router.use('/api/categories', CategoryRoutes.routes );
 
-    return router
+
+
+    return router;
   }
+
+
 }
+

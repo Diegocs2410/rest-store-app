@@ -1,20 +1,26 @@
-import { regularExps } from "../../../config"
+import { regularExps } from '../../../config';
 
-class LoginUserDTO {
+
+
+
+export class LoginUserDto {
+
   private constructor(
-    public readonly email: string,
-    public readonly password: string
+    public email: string,
+    public password: string,
   ) {}
 
-  static create(obj: { [key: string]: any }): [string?, LoginUserDTO?] {
-    const { email, password } = obj
-    if (!email) return ["Missing email"]
-    if (!regularExps.email.test(email)) return ["Email does not validated"]
-    if (!password) return ["Missing password"]
-    if (password.length < 6) return ["Password too short"]
+  static create( object: { [key:string]:any } ): [string?, LoginUserDto?] {
+    const { email, password } = object;
 
-    return [undefined, new LoginUserDTO(email, password)]
+    if ( !email ) return ['Missing email'];
+    if ( !regularExps.email.test( email ) ) return ['Email is not valid'];
+    if ( !password ) return ['Missing password'];
+    if ( password.length < 6 ) return ['Password too short'];
+
+    return [undefined, new LoginUserDto(email, password)];
+
   }
-}
 
-export default LoginUserDTO
+
+}

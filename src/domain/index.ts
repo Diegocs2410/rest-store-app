@@ -1,5 +1,14 @@
-export { default as CustomErrors } from "./errors/custom.error"
-export { default as RegisterUserDTO } from "./dtos/auth/register-user.dto"
-export { default as LoginUserDTO } from "./dtos/auth/login-user.dto"
-export { default as UserEntity } from "./entities/user.entity"
-export { default as CreateCategoryDTO } from "./dtos/category/category.dto"
+
+
+
+
+export * from './errors/custom.error';
+
+export * from './entities/user.entity';
+
+export * from './dtos/auth/register-user.dto'
+export * from './dtos/auth/login-user.dto'
+
+export * from './dtos/category/create-category.dto';
+
+export * from './dtos/shared/pagination.dto';

@@ -1,26 +1,28 @@
-import { regularExps } from "../../../config"
+import { regularExps } from '../../../config';
 
-class RegisterUserDTO {
+
+
+
+export class RegisterUserDto {
+
   private constructor(
-    public readonly name: string,
-    public readonly email: string,
-    public readonly password: string,
-    public readonly emailValidated: boolean = false
+    public name: string,
+    public email: string,
+    public password: string,
   ) {}
 
-  static create(obj: { [key: string]: any }): [string?, RegisterUserDTO?] {
-    const { name, email, password, emailValidated } = obj
-    if (!name) return ["Missing name"]
-    if (!email) return ["Missing email"]
-    if (!regularExps.email.test(email)) return ["Email does not validated"]
-    if (!password) return ["Missing password"]
-    if (password.length < 6) return ["Password too short"]
+  static create( object: { [key:string]:any } ): [string?, RegisterUserDto?] {
+    const { name, email, password } = object;
 
-    return [
-      undefined,
-      new RegisterUserDTO(name, email, password, emailValidated),
-    ]
+    if ( !name ) return ['Missing name'];
+    if ( !email ) return ['Missing email'];
+    if ( !regularExps.email.test( email ) ) return ['Email is not valid'];
+    if ( !password ) return ['Missing password'];
+    if ( password.length < 6 ) return ['Password too short'];
+
+    return [undefined, new RegisterUserDto(name, email, password)];
+
   }
-}
 
-export default RegisterUserDTO
+
+}

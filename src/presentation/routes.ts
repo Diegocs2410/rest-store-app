@@ -1,5 +1,6 @@
 import { Router } from "express"
 import { AuthRoutes } from "./auth/routes"
+import CategoryRoutes from "./category/routes"
 
 /**
  * Represents the routes of the application.
@@ -14,6 +15,7 @@ export class AppRoutes {
     const router = Router()
 
     router.use("/api/auth", AuthRoutes.routes)
+    router.use("/api/categories", CategoryRoutes.routes)
 
     return router
   }
